@@ -1,0 +1,40 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  margin: 50px 0 200px 0;
+  box-sizing: border-box;
+  padding: 20px 20px;
+}
+
+.input-group {
+  box-sizing: border-box;
+  padding: 20px 20px;
+}
+#inputTodo {
+  margin: 0 10px 0 10px;
+}
+
+.display-todo {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  /* kenapa ini tidak ada */
+  /* border: 3pt; */
+  padding: 0 20px;
+}
+
+.display-todo div {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 2px 0;
+}
+
+button {
+  margin: 0 1px;
+}
