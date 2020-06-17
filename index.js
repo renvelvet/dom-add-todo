@@ -1,55 +1,54 @@
+// -------------------- Variable -------------------------
+let divList = document.querySelector(".display-todo");
 let listTodo = [];
-console.log(inputTodo);
 
 const addButton = document.getElementById("add-button");
 
+// -------------------- Functions -------------------------
+createButton = (element) => {
+  let button = document.createElement("button");
+  button.setAttribute("type", "button");
+  button.setAttribute("class", `btn btn-primary btn-sm ${element}`);
+  button.setAttribute("id", `${element}`);
+  let buttonText = document.createTextNode(`${element}`);
+  button.appendChild(buttonText);
+  // console.log(button);
+  return button;
+};
+
+createDiv = (attName, valueAtt) => {
+  let div = document.createElement("div");
+  div.setAttribute(attName, valueAtt);
+  return div;
+};
+
+// --------------------EVEN LISTENER -------------------------
+// add button clicked
 addButton.addEventListener("click", function () {
+  divList.innerHTML = null;
   const inputTodo = document.getElementById("inputTodo").value;
   listTodo.push(inputTodo);
-  console.log(listTodo);
-  let itemTodo = document.createTextNode(inputTodo);
-  let textTodo = document.createElement("p");
-  textTodo.appendChild(itemTodo);
 
-  let divTodo = document.createElement("div");
-  divTodo.setAttribute("class", "todo");
-  divTodo.appendChild(textTodo);
+  listTodo.forEach((item) => {
+    // item list
+    let itemTodo = document.createTextNode(item);
+    let textTodo = document.createElement("p");
+    textTodo.appendChild(itemTodo);
 
-  let divButton = document.createElement("div");
-  divTodo.setAttribute("class", "button");
-  //   bikin button edit
-  let editButton = document.createElement("button");
-  editButton.setAttribute("type", "button");
-  editButton.setAttribute("class", "btn btn-primary btn-sm");
-  let editText = document.createTextNode("Edit");
-  editButton.appendChild(editText);
-  // biki button delete
-  let delButton = document.createElement("button");
-  delButton.setAttribute("type", "button");
-  delButton.setAttribute("class", "btn btn-primary btn-sm");
-  let delText = document.createTextNode("Delete");
-  delButton.appendChild(delText);
+    // div todo
+    let divTodo = createDiv("class", "todo").appendChild(textTodo);
 
-  divButton.appendChild(editButton);
-  divButton.appendChild(delButton);
+    // div button
+    let divButton = createDiv("class", "button");
+    divButton.appendChild(createButton("edit"));
+    divButton.appendChild(createButton("delete"));
 
-  // bikin div tiap list
-  let divList = document.createElement("div");
-  divList.appendChild(divTodo);
-  divList.appendChild(divButton);
+    // list
+    let list = createDiv("class", "list");
+    list.appendChild(divTodo);
+    list.appendChild(divButton);
 
-  // gabungin ke div display
-  document.querySelector(".display-todo").appendChild(divList);
-
-  //   listTodo.forEach((item) => {
-  //     let itemTodo = document.createTextNode(item);
-  //     let textTodo = document.createElement("p");
-  //     textTodo.appendChild(itemTodo);
-
-  //     document.querySelector(".todo").appendChild(textTodo);
-  //     document.querySelector(
-  //       ".button"
-  //     ).innerHTML = `<button type="button" class="btn btn-primary btn-sm">Edit</button>
-  //     <button type="button" class="btn btn-primary btn-sm">Delete</button>`;
-  //   });
+    // masukin ke divList
+    divList.appendChild(list);
+  });
 });
